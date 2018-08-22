@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+	</head>
+	<body>
+	<h1 align="center">Servicio</h1>
+	<form action="/action_page.php" method="get">
+		Usuario: <input type="text" name="uname"><br>
+		Nombre del Servicio: <input type="text" name="sname"><br>
+		Fecha: <input type="text" name="date"><br>
+		Direccion: <input type="text" name="address"><br>
+  <button type="submit">Submit</button><br>
+  <button type="submit" formaction="/action_page2.php">Submit to another page</button>
+</form>
+	<table style="width:100%">
+			{% for u in usuario %}
+			<tr><th>{{ u }}</th><td><img src="" alt="Usuario" width="55" height="55"></td><td><button type="button">Servicio +</button></td></tr>
+			
+			<tr>
+				<th>Servicios Registrados</th>
+				{% for s in u.servicios.all %}
+					<td>{{ s }}<button type="button">Ver</button></td>
+				
+				{% endfor %}
+			</tr>
+			
+			{% endfor %}
+		</table>
+	
+</body>
+</html>

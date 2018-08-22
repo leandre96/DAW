@@ -1,0 +1,85 @@
+<html>
+	<head>
+	<meta id="my-data" data-name="{{registros}}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+    <body data-js-vars="{{registros}}" id="divivi">
+		<h3>Servicios:</h3>
+		<select id="select0">
+		{% for elem in unicos %}
+			<option value={{elem}}>{{elem}}</option>
+		{% endfor %}
+		</select>
+		<h3>Mes:</h3>
+		<select id="select1">
+			<option value="01">01</option>
+			<option value="02">02</option>
+			<option value="03">03</option>
+			<option value="04">04</option>
+			<option value="05">05</option>
+			<option value="06">06</option>
+			<option value="07">07</option>
+			<option value="08">08</option>
+			<option value="09">09</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+		</select>
+		<h3>Tabla a Mostrar</h3>
+		<button onclick="myFunction()">Ejecutar</button>
+		<table id="tt" style="width:100%">
+			<tr>
+				<th>Nombre Completo</th>
+				<th>Servicio</th> 
+				<th>Ciudad</th>
+				<th>Fecha</th>
+				<th>Total de Factura</th>
+			</tr>
+		</table>
+		<script>
+		function myFunction(){
+		
+		var table = document.getElementById("tt");
+		var djangoData = $('#my-data');
+		var td = document.createElement("p");
+		var txt = document.createTextNode(djangoData.split(","));
+			td.appendChild(txt);
+			document.getElementById("divivi").appendChild(td);
+		var x = document.getElementById("select0").selectedIndex;
+		var y = document.getElementById("select1").selectedIndex;
+		for (elem of djangoData){
+			var elem=elem[Registro]
+			alert(elem)
+			var sp=elem.split(" ")
+			var dtt=elem[fecha].split("/");
+			if(elem[servicio]==x && dtt==y ){
+			var tr = document.createElement("tr");
+			var td = document.createElement("td");
+			var txt = document.createTextNode(sp[0]);
+			td.appendChild(txt);
+			tr.appendChild(td);
+			var td = document.createElement("td");
+			var txt = document.createTextNode(sp[1]);
+			td.appendChild(txt);
+			tr.appendChild(td);
+			var td = document.createElement("td");
+			var txt = document.createTextNode(sp[2]);
+			td.appendChild(txt);
+			tr.appendChild(td);
+			var td = document.createElement("td");
+			var txt = document.createTextNode(sp[3]);
+			td.appendChild(txt);
+			tr.appendChild(td);
+			var td = document.createElement("td");
+			var txt = document.createTextNode(sp[4]);
+			td.appendChild(txt);
+			tr.appendChild(td);
+			table.appendChild(tr);
+			}
+		}
+		}
+	</script>
+
+    </body>
+</html>

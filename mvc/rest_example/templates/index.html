@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+	</head>
+	<body>
+	<h1 align="center">Todos mis Servicios</h1>
+	<table style="width:100%">
+			{% for u in usuario %}
+			<tr><th>{{ u }}</th><td><img src="" alt="Usuario" width="55" height="55"></td><td><button type="button">Servicio +</button></td></tr>
+			
+			<tr>
+				<th>Servicios Registrados</th>
+				{% for s in u.servicios.all %}
+					<td>{{ s }}<button type="button">Ver</button></td>
+				
+				{% endfor %}
+			</tr>
+			
+			{% endfor %}
+		</table>
+	
+</body>
+</html>

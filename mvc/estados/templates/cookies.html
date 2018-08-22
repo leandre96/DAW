@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+ 
+    {% if username is None %}
+        <form role="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" value="Submit" class="btn btn-info">LogIn</button>
+        </form>
+    {% else %}
+        <h3>Welcome {{ username }}</h3>
+		<h4>This is Page 2</h4>
+		<ul>
+			<li>Going to another page</li>
+			<li<a href="{% url 'demos-sessions2' %}">Going to another another page</li>
+		</ul>
+        <a href="{% url "demos-sessions" %}?action=logout">LogOut</a>
+    {% endif %}
+ 
+{% endblock %}
