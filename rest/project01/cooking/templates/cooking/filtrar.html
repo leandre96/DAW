@@ -1,0 +1,12 @@
+
+	{% if usuarios_list %}
+	    <ul>
+	    {% for u in usuarios_list %}
+		<li>{{ u.nombre }} {{ u.servicio }} {{ u.ciudad }} </li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No hay usuarios con esa info.</p>
+	{% endif %}
+
+

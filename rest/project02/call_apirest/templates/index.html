@@ -1,0 +1,116 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Edicion de Usuarios</title>
+  </head>
+  <style>
+	*{
+	font-family:courier;
+	}
+	th{
+	background-color:grey;
+	}
+	td{
+	background-color:orange;
+	}
+  </style>
+  <body>
+	
+
+    <!------------------------- START MY HTML ------------------>
+    <div class="container">
+	<img src="{% static 'img/emptyimage.png' %}" align="center" width="1000">
+     <h2 align="center">Usuarios y Servicios</h2>   
+	
+	<!-- assume there always users -->
+	{% if usuarios %}
+	    <table style="width:100%">				    
+		    <tr class="thead-dark">
+		      <th >ID</th>
+		      <th >Nombre</th>
+					<th >Servicio</th>
+		      <th >Ciudad</th>
+		      <th > Fecha</th>
+		      <th > </th>
+					<th > </th>
+		    </tr>		
+			
+		<form action="{% url 'add' %}" method="post">
+		{% csrf_token %}
+			<tr> 					
+		      <td > #id </td>
+		      <td ><input type="text" class="form-control" name="nombre"></td>
+		      <td ><input type="text" class="form-control" name="servicio"></td>
+					<td ><input type="text" class="form-control" name="ciudad"></td>
+		      <td ><input type="text" class="form-control" name="fecha" placeholder="YYYY-MM-DD"></td>
+		      <td > 
+					 <input type="submit" class="btn btn-outline-success" value="&#10010;" />
+			    </td>
+			<td></td>
+		    </tr>	 	
+		</form>
+
+		
+	    {% for u in usuarios %}		
+		
+		
+		    <tr> 
+		      <td >{{ u.id }} </td>
+		      <td >{{ u.nombre }} </td>
+					<td >{{ u.servicio }} </td>
+		      <td >{{  u.ciudad}}</td>		      
+					<td >
+					<!-- here I asociate this element that is outside of form-update -->
+					<input form="form-update-{{u.id}}" type="text" class="form-control" name="fecha" placeholder="YYYY-MM-DD" value="{{ u.fecha}}" ></td>
+		      <td > 				 
+
+				 <!-- post here, is ok -->
+				 <form action="{% url 'delete' u.id %}" method="post">
+							{% csrf_token %}
+	   		 <input type="submit" class="btn btn-outline-danger" Value="&#10060;"/>
+			 	 </form>
+
+ 				 </td>	
+
+					<td > 			
+				 <!-- the so-called form-update. by the way, post here, is ok -->				
+				 <form id="form-update-{{u.id}}" action="{% url 'update' u.id %}" method="post">
+							{% csrf_token %}
+	   		 <input type="submit" class="btn btn-outline-warning" Value="&#9997;"/>	
+				 </form>
+ 				 </td>	
+
+				</tr>	
+			
+			<!-- end of the another little fancy form -->			   	      
+		    	 						   
+	    {% endfor %}
+
+	    </table>
+	{% else %}
+	    <p>No existen usuarios</p>
+	{% endif %}
+    
+    </div>
+    <!------------------------- END MY HTML -------------------->
+
+    <!-- Optional JavaScript -->
+		<script>
+		function makeAction(action){
+			window.open(action,'_self');
+		}
+	  </script>	
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+h1{
+	text-align: center;
+	font-size: 40pt;
+	background-image: url(http://es.fifa.com//assets/img/tournaments/17/2018/common/fwc_darkbluebg.png);
+	color: white;
+	font-family: "Lucida Console";
+}
+#menu_nav li{
+	display: inline;
+	list-style: none;
+	padding-right: 2em;
+	font-weight: bold;
+	font-size: 2em;
+	margin-left: 4em;
+
+}
+
+#seccion_aside{
+	float: left;
+	width: 300px;
+	height: 420px;
+	text-align: center;
+	border: 2px solid black;
+	margin-left: 2em;
+	margin-right: 4em;
+	margin-bottom: 3em;
+}
+
+.computer{
+	width: 180px;
+	height: 150px;
+	opacity: 0.69;
+	cursor: pointer;
+
+}
+footer{
+	clear: both;
+	border-width: 3pt dotted black;
+	background-color: #23467f;
+	color: white;
+	text-align: left;
+    text-justify: inter-word;
+}
+
+hr{
+	margin-bottom: 2em;
+}
+
+#main_content{
+	display: inline;
+	float: left;
+	width: 700px;
+	height: 400px;
+	text-align: justify;
+	border: 2px solid black;
+	margin-top: 2em;
+}
+
+.articulo1{
+	display: inline;
+	width: 280px;
+	height: 150px;
+}
+
+.servicios{
+	float:left;
+	width: 200px;
+	height: 150px;
+	margin-right: 2em;
+	margin-top: 2em;
+	margin-left: 2em;
+}
+
+.par{
+	
+	text-align: justify;
+	margin-top: 2em;
+	margin-right: 2em;
+
+}
+
+.num-dates{
+
+	flaot:left;
+	width: 200px;
+	height: 200px;
+}
+
+.calendar{
+	width: 200px;
+	height: 200px;
+	clear: both;
+}
+
+.articulo2{
+	clear: both;
+	margin-top: 2em;
+	margin-left: 2em;
+}
+
+.table{
+	width: 400px;
+	height: 200px;
+	margin-left: 2em;
+}
